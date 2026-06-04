@@ -3,6 +3,7 @@ import { Nav } from "@/components/site/Nav";
 import { Hero } from "@/components/site/Hero";
 import { ProductGrid } from "@/components/site/ProductGrid";
 import { AboutSummary } from "@/components/site/AboutSummary";
+import { TheGrid } from "@/components/site/TheGrid";
 import { ContactBlock } from "@/components/site/ContactBlock";
 import { Footer } from "@/components/site/Footer";
 
@@ -32,6 +33,7 @@ function Index() {
       <Nav />
       <Hero />
       <ProductGrid />
+      <TheGrid />
       <AboutSummary />
       <ContactBlock />
       <Footer />
