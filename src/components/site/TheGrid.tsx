@@ -205,8 +205,8 @@ export function TheGrid() {
             <p className="font-sans text-lg md:text-2xl font-medium text-black leading-[1.5]">
               "The Grid is a league system designed to shift regional gokarting
               from a simple, one-time amusement ride into a{" "}
-              <span className="bg-black text-white px-1.5">ranked, competitive, high-retention ecosystem</span>{" "}
-              that drives repeat customer loyalty."
+              <span className="bg-black text-white px-1.5">ranked, competitive, professional ecosystem.</span>"
+
             </p>
           </blockquote>
         </div>
