@@ -33,6 +33,7 @@ function Index() {
       <Nav />
       <Hero />
       <ProductGrid />
+      <TheGrid />
       <AboutSummary />
       <ContactBlock />
       <Footer />
