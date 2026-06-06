@@ -57,6 +57,8 @@ export function ProductGrid() {
               <div className="relative aspect-[4/3] overflow-hidden bg-card">
                 {p.code === "P/02" ? (
                   <LaserRender src={p.img} alt={p.title} />
+                ) : p.code === "P/03" ? (
+                  <SkillRender src={p.img} alt={p.title} />
                 ) : (
                   <>
                     <div className="absolute inset-0 dot-grid opacity-30" />
