@@ -56,7 +56,7 @@ export function ProductGrid() {
             >
               <div className="relative aspect-[4/3] overflow-hidden bg-card">
                 {p.code === "P/02" ? (
-                  <LaserBlueprint />
+                  <LaserRender src={p.img} alt={p.title} />
                 ) : (
                   <>
                     <div className="absolute inset-0 dot-grid opacity-30" />
@@ -70,10 +70,10 @@ export function ProductGrid() {
                     />
                   </>
                 )}
-                <div className="absolute top-3 left-3 font-tech text-[10px] uppercase tracking-[0.25em] text-adrnln z-10">
+                <div className="absolute top-3 left-3 font-tech text-[10px] uppercase tracking-[0.25em] text-[#FF0055] z-20">
                   {p.code}
                 </div>
-                <div className="absolute top-3 right-3 font-tech text-[10px] uppercase tracking-[0.25em] text-muted-foreground z-10">
+                <div className="absolute top-3 right-3 font-tech text-[10px] uppercase tracking-[0.25em] text-neutral-400 opacity-80 hover:opacity-100 transition-opacity z-20">
                   EXPLORE →
                 </div>
               </div>
