@@ -149,3 +149,69 @@ function LaserRender({ src, alt }: { src: string; alt: string }) {
     </div>
   );
 }
+
+function SkillRender({ src, alt }: { src: string; alt: string }) {
+  return (
+    <div className="absolute inset-0 bg-black overflow-hidden">
+      {/* micro-dot matrix */}
+      <div
+        className="absolute inset-0 opacity-40 pointer-events-none"
+        style={{
+          backgroundImage: "radial-gradient(rgba(255,255,255,0.18) 1px, transparent 1px)",
+          backgroundSize: "14px 14px",
+        }}
+      />
+      {/* overhead spotlight wash */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(255,255,255,0.10), transparent 70%)",
+        }}
+      />
+
+      {/* product render */}
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        width={1024}
+        height={1024}
+        className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-700"
+      />
+
+      {/* red ground underglow */}
+      <div
+        className="absolute left-1/2 -translate-x-1/2 bottom-[6%] w-[55%] h-6 pointer-events-none"
+        style={{
+          background: "#FF0055",
+          filter: "blur(28px)",
+          opacity: 0.85,
+        }}
+      />
+      <div
+        className="absolute left-1/2 -translate-x-1/2 bottom-[4%] w-[35%] h-2 pointer-events-none"
+        style={{
+          background: "#FF0055",
+          filter: "blur(10px)",
+        }}
+      />
+
+      {/* corner ticks */}
+      <div className="absolute top-2 left-2 w-3 h-3 border-l border-t border-white/30" />
+      <div className="absolute top-2 right-2 w-3 h-3 border-r border-t border-white/30" />
+      <div className="absolute bottom-2 left-2 w-3 h-3 border-l border-b border-white/30" />
+      <div className="absolute bottom-2 right-2 w-3 h-3 border-r border-b border-white/30" />
+
+      {/* bottom labels */}
+      <div className="absolute bottom-4 left-4 right-4 z-20">
+        <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-neutral-400">
+          [ CUSTOM_ENGINEERING // ARCADE &amp; CARNIVAL ]
+        </div>
+        <div className="mt-2 font-mono text-[10px] uppercase tracking-[0.2em] text-neutral-500">
+          Knife Drop · Hammer Strike · Arcade Games
+        </div>
+      </div>
+    </div>
+  );
+}
