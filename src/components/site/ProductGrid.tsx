@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import heroKart from "@/assets/hero-kart.jpg";
-import laser from "@/assets/tech-safety.jpg";
+import laser from "@/assets/laser-phaser-render.jpg";
 import skill from "@/assets/tech-cockpit.jpg";
 
 const products = [
