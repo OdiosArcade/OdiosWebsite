@@ -95,7 +95,7 @@ export function TheGrid() {
         }}
       />
 
-      <div className="relative mx-auto max-w-[1400px] px-6 lg:px-10 py-24 lg:py-32">
+      <div className="relative mx-auto max-w-[1400px] px-6 md:px-8 lg:px-10 py-20 md:py-24 lg:py-32">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-black/10 pb-8">
           <div>
