@@ -23,7 +23,7 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="relative z-10 mx-auto max-w-[1400px] px-6 lg:px-10 pt-16 lg:pt-24">
+      <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-8 lg:px-10 pt-12 md:pt-16 lg:pt-24">
         <div className="grid grid-cols-12 gap-6 items-end">
           <div className="col-span-12 lg:col-span-8">
             <div className="font-tech text-[11px] uppercase tracking-[0.4em] text-adrnln mb-6 flex items-center gap-3">
