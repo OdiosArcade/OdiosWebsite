@@ -30,14 +30,14 @@ const products = [
 
 export function ProductGrid() {
   return (
-    <section className="relative py-24 lg:py-32 border-t border-border">
-      <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
-        <div className="flex items-end justify-between gap-8 mb-12">
+    <section className="relative py-20 md:py-24 lg:py-32 border-t border-border">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-8 lg:px-10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 md:gap-8 mb-10 md:mb-12">
           <div>
             <div className="font-tech text-[11px] uppercase tracking-[0.4em] text-adrnln mb-4">
               ◆ 01 / Product Sectors
             </div>
-            <h2 className="font-dot text-5xl md:text-7xl leading-[0.9]">
+            <h2 className="font-dot text-4xl sm:text-5xl md:text-7xl leading-[0.9]">
               Three lines.
               <br />
               <span className="text-muted-foreground">One workshop.</span>
