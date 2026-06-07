@@ -103,7 +103,7 @@ export function TheGrid() {
               <span className="inline-block w-6 h-px bg-black/40" />
               SYSTEM // LOCK-IN ECOSYSTEM
             </div>
-            <h2 className="font-sans text-5xl md:text-7xl font-bold tracking-tight leading-[0.9]">
+            <h2 className="font-sans text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-[0.9]">
               THE GRID
             </h2>
           </div>
