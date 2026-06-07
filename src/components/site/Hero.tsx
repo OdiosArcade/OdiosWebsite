@@ -8,7 +8,7 @@ export function Hero() {
       <div className="absolute inset-0 scanlines pointer-events-none" aria-hidden />
 
       <div className="relative z-10 border-b border-border/60">
-        <div className="mx-auto max-w-[1400px] px-6 lg:px-10 h-9 flex items-center justify-between font-tech text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+        <div className="mx-auto max-w-[1400px] px-6 md:px-8 lg:px-10 h-9 flex items-center justify-between font-tech text-[9px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.25em] text-muted-foreground">
           <div className="flex items-center gap-4">
             <span className="text-adrnln">●</span>
             <span>SYS / ODIOS-RACING</span>
