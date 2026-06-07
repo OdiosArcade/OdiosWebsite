@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import heroKart from "@/assets/hero-kart.jpg";
 import laser from "@/assets/laser-phaser-render.jpg";
-import skill from "@/assets/tech-cockpit.jpg";
+import skillAsset from "@/assets/skill-arcade.png.asset.json";
+const skill = skillAsset.url;
 
 const products = [
   {
