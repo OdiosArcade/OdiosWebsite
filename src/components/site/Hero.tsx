@@ -64,11 +64,11 @@ export function Hero() {
                 { l: "TELEMETRY", v: "1KHz" },
                 { l: "FRANCHISE", v: "₹0" },
               ].map((s) => (
-                <div key={s.l} className="bg-background p-5">
-                  <div className="font-tech text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+                <div key={s.l} className="bg-background p-3 sm:p-4 md:p-5">
+                  <div className="font-tech text-[9px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.25em] text-muted-foreground">
                     {s.l}
                   </div>
-                  <div className="font-dot text-4xl mt-2">{s.v}</div>
+                  <div className="font-dot text-2xl sm:text-3xl md:text-4xl mt-2">{s.v}</div>
                 </div>
               ))}
             </div>
