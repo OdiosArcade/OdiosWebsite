@@ -95,7 +95,7 @@ export function TheGrid() {
         }}
       />
 
-      <div className="relative mx-auto max-w-[1400px] px-6 lg:px-10 py-24 lg:py-32">
+      <div className="relative mx-auto max-w-[1400px] px-6 md:px-8 lg:px-10 py-20 md:py-24 lg:py-32">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-black/10 pb-8">
           <div>
@@ -103,7 +103,7 @@ export function TheGrid() {
               <span className="inline-block w-6 h-px bg-black/40" />
               SYSTEM // LOCK-IN ECOSYSTEM
             </div>
-            <h2 className="font-sans text-5xl md:text-7xl font-bold tracking-tight leading-[0.9]">
+            <h2 className="font-sans text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-[0.9]">
               THE GRID
             </h2>
           </div>
@@ -124,10 +124,10 @@ export function TheGrid() {
             { v: 100, s: "%", label: "RETENTION ENGINE" },
           ].map((s) => (
             <div key={s.label} className="py-6 md:py-8 px-2 first:pl-0 border-r border-black/10 last:border-r-0">
-              <div className="font-sans text-3xl md:text-5xl font-bold tracking-tight tabular-nums">
+              <div className="font-sans text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight tabular-nums">
                 <Counter to={s.v} suffix={s.s} />
               </div>
-              <div className="font-tech text-[10px] uppercase tracking-[0.3em] text-black/40 mt-2">
+              <div className="font-tech text-[9px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.3em] text-black/40 mt-2 leading-tight">
                 {s.label}
               </div>
             </div>

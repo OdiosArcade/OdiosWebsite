@@ -1,11 +1,11 @@
 export function ContactBlock() {
   return (
-    <section id="contact-section" className="relative py-28 lg:py-36 border-t border-border">
-      <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
+    <section id="contact-section" className="relative py-24 md:py-28 lg:py-36 border-t border-border">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-8 lg:px-10">
         <div className="font-tech text-[11px] uppercase tracking-[0.4em] text-adrnln mb-4">
           ◆ 03 / Contact
         </div>
-        <h2 className="font-dot text-5xl md:text-7xl leading-[0.9]">
+        <h2 className="font-dot text-4xl sm:text-5xl md:text-7xl leading-[0.9]">
           Open a line.
           <br />
           <span className="text-muted-foreground">Build a venue.</span>

@@ -46,19 +46,19 @@ const defaultModels: Model[] = [
 
 export function BusinessModels({ models = defaultModels, sectionNumber = "05" }: { models?: Model[]; sectionNumber?: string }) {
   return (
-    <section id="business" className="relative py-28 lg:py-40 border-t border-border bg-card">
+    <section id="business" className="relative py-24 md:py-28 lg:py-40 border-t border-border bg-card">
       <div className="absolute inset-0 dot-grid opacity-30" aria-hidden />
-      <div className="relative mx-auto max-w-[1400px] px-6 lg:px-10">
+      <div className="relative mx-auto max-w-[1400px] px-6 md:px-8 lg:px-10">
         <div className="font-tech text-[11px] uppercase tracking-[0.4em] text-adrnln mb-4">
           ◆ {sectionNumber} / Engagement Models
         </div>
-        <h2 className="font-dot text-5xl md:text-7xl leading-[0.9] mb-16">
+        <h2 className="font-dot text-4xl sm:text-5xl md:text-7xl leading-[0.9] mb-12 md:mb-16">
           Four ways to put
           <br />
           us on track.
         </h2>
 
-        <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-px bg-border border border-border">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-px bg-border border border-border">
           {models.map((m) => (
             <article key={m.code} className="bg-card p-8 md:p-10 relative flex flex-col">
               {m.tag && (
