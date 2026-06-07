@@ -102,7 +102,7 @@ export function Hero() {
       </div>
 
       <div className="relative z-10 mt-16 border-y border-border overflow-hidden bg-background">
-        <div className="flex marquee-track whitespace-nowrap py-4 font-dot text-3xl">
+        <div className="flex marquee-track whitespace-nowrap py-4 font-dot text-xl md:text-3xl">
           {Array.from({ length: 2 }).map((_, i) => (
             <div key={i} className="flex items-center gap-10 pr-10 shrink-0">
               {["PRECISION", "VELOCITY", "SAFETY", "TELEMETRY", "SPECTACLE", "CRAFT", "INDIA / 2026"].map((w) => (
