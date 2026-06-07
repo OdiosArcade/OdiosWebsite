@@ -10,7 +10,7 @@ export function Footer() {
             ◆ / Origin
           </div>
           <blockquote className="col-span-12 lg:col-span-10">
-            <p className="font-dot text-3xl md:text-5xl lg:text-6xl leading-[1.05]">
+            <p className="font-dot text-2xl sm:text-3xl md:text-5xl lg:text-6xl leading-[1.1]">
               “I started racing go-karts<span className="text-adrnln">.</span> It's the
               most breathtaking sport in the world.”
             </p>
