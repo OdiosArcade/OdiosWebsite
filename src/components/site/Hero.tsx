@@ -40,17 +40,17 @@ export function Hero() {
             <p className="mt-8 max-w-xl font-dot text-2xl lg:text-3xl text-muted-foreground leading-snug">
               Whatever the need, <span className="text-foreground">we build it.</span>
             </p>
-            <div className="mt-10 flex flex-wrap items-center gap-4">
+            <div className="mt-10 flex flex-wrap items-center gap-3 sm:gap-4">
               <Link
                 to="/go-karts"
-                className="group inline-flex items-center gap-3 bg-adrnln text-adrnln-foreground px-6 py-4 font-tech text-xs uppercase tracking-[0.2em] hover:opacity-90 transition"
+                className="group inline-flex items-center gap-3 bg-adrnln text-adrnln-foreground px-6 py-4 min-h-[52px] font-tech text-xs uppercase tracking-[0.2em] hover:opacity-90 transition"
               >
                 Enter The Pit Lane
                 <span className="group-hover:translate-x-1 transition-transform">→</span>
               </Link>
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-3 border border-border px-6 py-4 font-tech text-xs uppercase tracking-[0.2em] hover:border-foreground transition"
+                className="inline-flex items-center gap-3 border border-border px-6 py-4 min-h-[52px] font-tech text-xs uppercase tracking-[0.2em] hover:border-foreground transition"
               >
                 Get a Quote
               </Link>
