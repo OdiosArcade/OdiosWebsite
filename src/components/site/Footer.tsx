@@ -2,8 +2,8 @@ import { Link } from "@tanstack/react-router";
 
 export function Footer() {
   return (
-    <footer id="contact" className="relative pt-28 lg:pt-36 pb-10 border-t border-border">
-      <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
+    <footer id="contact" className="relative pt-24 md:pt-28 lg:pt-36 pb-10 border-t border-border">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-8 lg:px-10">
         {/* Senna quote */}
         <div className="grid grid-cols-12 gap-6 items-end mb-20">
           <div className="col-span-12 lg:col-span-2 font-tech text-[10px] uppercase tracking-[0.3em] text-adrnln">
