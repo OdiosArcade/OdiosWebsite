@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as SkillGamesRouteImport } from './routes/skill-games'
 import { Route as LaserTagRouteImport } from './routes/laser-tag'
 import { Route as GoKartsRouteImport } from './routes/go-karts'
+import { Route as DebugRouteImport } from './routes/debug'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -29,6 +30,11 @@ const LaserTagRoute = LaserTagRouteImport.update({
 const GoKartsRoute = GoKartsRouteImport.update({
   id: '/go-karts',
   path: '/go-karts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DebugRoute = DebugRouteImport.update({
+  id: '/debug',
+  path: '/debug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -51,6 +57,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/debug': typeof DebugRoute
   '/go-karts': typeof GoKartsRoute
   '/laser-tag': typeof LaserTagRoute
   '/skill-games': typeof SkillGamesRoute
@@ -59,6 +66,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/debug': typeof DebugRoute
   '/go-karts': typeof GoKartsRoute
   '/laser-tag': typeof LaserTagRoute
   '/skill-games': typeof SkillGamesRoute
@@ -68,6 +76,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/debug': typeof DebugRoute
   '/go-karts': typeof GoKartsRoute
   '/laser-tag': typeof LaserTagRoute
   '/skill-games': typeof SkillGamesRoute
@@ -78,16 +87,25 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
+    | '/debug'
     | '/go-karts'
     | '/laser-tag'
     | '/skill-games'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/go-karts' | '/laser-tag' | '/skill-games'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/debug'
+    | '/go-karts'
+    | '/laser-tag'
+    | '/skill-games'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/contact'
+    | '/debug'
     | '/go-karts'
     | '/laser-tag'
     | '/skill-games'
@@ -97,6 +115,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
+  DebugRoute: typeof DebugRoute
   GoKartsRoute: typeof GoKartsRoute
   LaserTagRoute: typeof LaserTagRoute
   SkillGamesRoute: typeof SkillGamesRoute
@@ -123,6 +142,13 @@ declare module '@tanstack/react-router' {
       path: '/go-karts'
       fullPath: '/go-karts'
       preLoaderRoute: typeof GoKartsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/debug': {
+      id: '/debug'
+      path: '/debug'
+      fullPath: '/debug'
+      preLoaderRoute: typeof DebugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -153,6 +179,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
+  DebugRoute: DebugRoute,
   GoKartsRoute: GoKartsRoute,
   LaserTagRoute: LaserTagRoute,
   SkillGamesRoute: SkillGamesRoute,
