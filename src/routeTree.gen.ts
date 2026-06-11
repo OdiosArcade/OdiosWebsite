@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SkillGamesRouteImport } from './routes/skill-games'
+import { Route as RegisterRouteImport } from './routes/register'
 import { Route as LaserTagRouteImport } from './routes/laser-tag'
 import { Route as GoKartsRouteImport } from './routes/go-karts'
 import { Route as DebugRouteImport } from './routes/debug'
@@ -20,6 +21,11 @@ import { Route as IndexRouteImport } from './routes/index'
 const SkillGamesRoute = SkillGamesRouteImport.update({
   id: '/skill-games',
   path: '/skill-games',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LaserTagRoute = LaserTagRouteImport.update({
@@ -60,6 +66,7 @@ export interface FileRoutesByFullPath {
   '/debug': typeof DebugRoute
   '/go-karts': typeof GoKartsRoute
   '/laser-tag': typeof LaserTagRoute
+  '/register': typeof RegisterRoute
   '/skill-games': typeof SkillGamesRoute
 }
 export interface FileRoutesByTo {
@@ -69,6 +76,7 @@ export interface FileRoutesByTo {
   '/debug': typeof DebugRoute
   '/go-karts': typeof GoKartsRoute
   '/laser-tag': typeof LaserTagRoute
+  '/register': typeof RegisterRoute
   '/skill-games': typeof SkillGamesRoute
 }
 export interface FileRoutesById {
@@ -79,6 +87,7 @@ export interface FileRoutesById {
   '/debug': typeof DebugRoute
   '/go-karts': typeof GoKartsRoute
   '/laser-tag': typeof LaserTagRoute
+  '/register': typeof RegisterRoute
   '/skill-games': typeof SkillGamesRoute
 }
 export interface FileRouteTypes {
@@ -90,6 +99,7 @@ export interface FileRouteTypes {
     | '/debug'
     | '/go-karts'
     | '/laser-tag'
+    | '/register'
     | '/skill-games'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -99,6 +109,7 @@ export interface FileRouteTypes {
     | '/debug'
     | '/go-karts'
     | '/laser-tag'
+    | '/register'
     | '/skill-games'
   id:
     | '__root__'
@@ -108,6 +119,7 @@ export interface FileRouteTypes {
     | '/debug'
     | '/go-karts'
     | '/laser-tag'
+    | '/register'
     | '/skill-games'
   fileRoutesById: FileRoutesById
 }
@@ -118,6 +130,7 @@ export interface RootRouteChildren {
   DebugRoute: typeof DebugRoute
   GoKartsRoute: typeof GoKartsRoute
   LaserTagRoute: typeof LaserTagRoute
+  RegisterRoute: typeof RegisterRoute
   SkillGamesRoute: typeof SkillGamesRoute
 }
 
@@ -128,6 +141,13 @@ declare module '@tanstack/react-router' {
       path: '/skill-games'
       fullPath: '/skill-games'
       preLoaderRoute: typeof SkillGamesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/laser-tag': {
@@ -182,6 +202,7 @@ const rootRouteChildren: RootRouteChildren = {
   DebugRoute: DebugRoute,
   GoKartsRoute: GoKartsRoute,
   LaserTagRoute: LaserTagRoute,
+  RegisterRoute: RegisterRoute,
   SkillGamesRoute: SkillGamesRoute,
 }
 export const routeTree = rootRouteImport
