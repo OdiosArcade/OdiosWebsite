@@ -1,6 +1,9 @@
 export function ContactBlock() {
   return (
-    <section id="contact-section" className="relative py-24 md:py-28 lg:py-36 border-t border-border">
+    <section
+      id="contact-section"
+      className="relative py-24 md:py-28 lg:py-36 border-t border-border"
+    >
       <div className="mx-auto max-w-[1400px] px-6 md:px-8 lg:px-10">
         <div className="font-tech text-[11px] uppercase tracking-[0.4em] text-adrnln mb-4">
           ◆ 03 / Contact

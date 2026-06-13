@@ -105,7 +105,15 @@ export function Hero() {
         <div className="flex marquee-track whitespace-nowrap py-4 font-dot text-xl md:text-3xl">
           {Array.from({ length: 2 }).map((_, i) => (
             <div key={i} className="flex items-center gap-10 pr-10 shrink-0">
-              {["PRECISION", "VELOCITY", "SAFETY", "TELEMETRY", "SPECTACLE", "CRAFT", "INDIA / 2026"].map((w) => (
+              {[
+                "PRECISION",
+                "VELOCITY",
+                "SAFETY",
+                "TELEMETRY",
+                "SPECTACLE",
+                "CRAFT",
+                "INDIA / 2026",
+              ].map((w) => (
                 <span key={w} className="flex items-center gap-10">
                   {w}
                   <span className="text-adrnln">◆</span>

@@ -9,8 +9,7 @@ const modules = [
     tag: "XP POINTS",
     title: "LEVELING SYSTEM",
     img: leveling,
-    body:
-      "Every lap earns drivers XP based on lap time. The more they drive, the more XP they earn — unlocking exclusive features, performance specs, and new karts.",
+    body: "Every lap earns drivers XP based on lap time. The more they drive, the more XP they earn — unlocking exclusive features, performance specs, and new karts.",
     specs: [
       ["INPUT", "LAP TIME"],
       ["OUTPUT", "XP / LVL"],
@@ -22,8 +21,7 @@ const modules = [
     tag: "REAL-TIME LAP TIME",
     title: "RANKING SYSTEM",
     img: ranking,
-    body:
-      "A synchronized leaderboard based on lap times updates in real time after each session. Localized per track, every circuit maintains its own digital competitive hierarchy.",
+    body: "A synchronized leaderboard based on lap times updates in real time after each session. Localized per track, every circuit maintains its own digital competitive hierarchy.",
     specs: [
       ["SYNC", "REAL-TIME"],
       ["SCOPE", "PER TRACK"],
@@ -35,8 +33,7 @@ const modules = [
     tag: "THE ELITE BOARD",
     title: "THE BLACKLIST",
     img: blacklist,
-    body:
-      "The top 15 fastest drivers on each track form the elite Blacklist. Any ranked player can challenge anyone above them. Win and you seize their rank — they drop down.",
+    body: "The top 15 fastest drivers on each track form the elite Blacklist. Any ranked player can challenge anyone above them. Win and you seize their rank — they drop down.",
     specs: [
       ["ELITES", "TOP 15"],
       ["MODE", "CHALLENGE"],
@@ -68,7 +65,7 @@ function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
           }
         });
       },
-      { threshold: 0.4 }
+      { threshold: 0.4 },
     );
     io.observe(el);
     return () => io.disconnect();
@@ -123,7 +120,10 @@ export function TheGrid() {
             { v: 200, s: "MS", label: "LEADERBOARD SYNC" },
             { v: 100, s: "%", label: "RETENTION ENGINE" },
           ].map((s) => (
-            <div key={s.label} className="py-6 md:py-8 px-2 first:pl-0 border-r border-black/10 last:border-r-0">
+            <div
+              key={s.label}
+              className="py-6 md:py-8 px-2 first:pl-0 border-r border-black/10 last:border-r-0"
+            >
               <div className="font-sans text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight tabular-nums">
                 <Counter to={s.v} suffix={s.s} />
               </div>
@@ -181,10 +181,7 @@ export function TheGrid() {
               {/* Specs */}
               <dl className="mt-7 grid grid-cols-3 border-t border-current/10">
                 {m.specs.map(([k, v]) => (
-                  <div
-                    key={k}
-                    className="py-3 pr-3 border-r border-current/10 last:border-r-0"
-                  >
+                  <div key={k} className="py-3 pr-3 border-r border-current/10 last:border-r-0">
                     <dt className="font-tech text-[9px] uppercase tracking-[0.25em] opacity-50">
                       {k}
                     </dt>
@@ -203,10 +200,12 @@ export function TheGrid() {
           </div>
           <blockquote className="max-w-4xl border-l-2 border-black pl-6">
             <p className="font-sans text-lg md:text-2xl font-medium text-black leading-[1.5]">
-              "The Grid is a league system designed to shift regional gokarting
-              from a simple, one-time amusement ride into a{" "}
-              <span className="bg-black text-white px-1.5">ranked, competitive, professional ecosystem.</span>"
-
+              "The Grid is a league system designed to shift regional gokarting from a simple,
+              one-time amusement ride into a{" "}
+              <span className="bg-black text-white px-1.5">
+                ranked, competitive, professional ecosystem.
+              </span>
+              "
             </p>
           </blockquote>
         </div>

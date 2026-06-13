@@ -25,11 +25,7 @@ export function Nav() {
   return (
     <header className="fixed top-0 inset-x-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur-xl">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10 h-14 flex items-center justify-between gap-6">
-        <Link
-          to="/"
-          onClick={() => setOpen(false)}
-          className="flex items-center gap-2 shrink-0"
-        >
+        <Link to="/" onClick={() => setOpen(false)} className="flex items-center gap-2 shrink-0">
           <span className="inline-block w-2 h-2 bg-adrnln rounded-full" />
           <span className="font-dot text-2xl leading-none">ODIOS</span>
           <span className="font-tech text-[10px] text-muted-foreground border border-border px-1 ml-1 hidden sm:inline">

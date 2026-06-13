@@ -9,15 +9,28 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TelemetryRouteImport } from './routes/telemetry'
 import { Route as SkillGamesRouteImport } from './routes/skill-games'
 import { Route as RegisterRouteImport } from './routes/register'
+import { Route as RacerPortalRouteImport } from './routes/racer-portal'
+import { Route as PitlaneRouteImport } from './routes/pitlane'
+import { Route as OperatorRouteImport } from './routes/operator'
+import { Route as LeaderboardRouteImport } from './routes/leaderboard'
 import { Route as LaserTagRouteImport } from './routes/laser-tag'
 import { Route as GoKartsRouteImport } from './routes/go-karts'
+import { Route as DriverCardRouteImport } from './routes/driver-card'
 import { Route as DebugRouteImport } from './routes/debug'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as BindTagRouteImport } from './routes/bind-tag'
+import { Route as AdminPortalRouteImport } from './routes/admin-portal'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
+const TelemetryRoute = TelemetryRouteImport.update({
+  id: '/telemetry',
+  path: '/telemetry',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SkillGamesRoute = SkillGamesRouteImport.update({
   id: '/skill-games',
   path: '/skill-games',
@@ -26,6 +39,26 @@ const SkillGamesRoute = SkillGamesRouteImport.update({
 const RegisterRoute = RegisterRouteImport.update({
   id: '/register',
   path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RacerPortalRoute = RacerPortalRouteImport.update({
+  id: '/racer-portal',
+  path: '/racer-portal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PitlaneRoute = PitlaneRouteImport.update({
+  id: '/pitlane',
+  path: '/pitlane',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OperatorRoute = OperatorRouteImport.update({
+  id: '/operator',
+  path: '/operator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LeaderboardRoute = LeaderboardRouteImport.update({
+  id: '/leaderboard',
+  path: '/leaderboard',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LaserTagRoute = LaserTagRouteImport.update({
@@ -38,6 +71,11 @@ const GoKartsRoute = GoKartsRouteImport.update({
   path: '/go-karts',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DriverCardRoute = DriverCardRouteImport.update({
+  id: '/driver-card',
+  path: '/driver-card',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DebugRoute = DebugRouteImport.update({
   id: '/debug',
   path: '/debug',
@@ -46,6 +84,16 @@ const DebugRoute = DebugRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BindTagRoute = BindTagRouteImport.update({
+  id: '/bind-tag',
+  path: '/bind-tag',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminPortalRoute = AdminPortalRouteImport.update({
+  id: '/admin-portal',
+  path: '/admin-portal',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -62,80 +110,143 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin-portal': typeof AdminPortalRoute
+  '/bind-tag': typeof BindTagRoute
   '/contact': typeof ContactRoute
   '/debug': typeof DebugRoute
+  '/driver-card': typeof DriverCardRoute
   '/go-karts': typeof GoKartsRoute
   '/laser-tag': typeof LaserTagRoute
+  '/leaderboard': typeof LeaderboardRoute
+  '/operator': typeof OperatorRoute
+  '/pitlane': typeof PitlaneRoute
+  '/racer-portal': typeof RacerPortalRoute
   '/register': typeof RegisterRoute
   '/skill-games': typeof SkillGamesRoute
+  '/telemetry': typeof TelemetryRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin-portal': typeof AdminPortalRoute
+  '/bind-tag': typeof BindTagRoute
   '/contact': typeof ContactRoute
   '/debug': typeof DebugRoute
+  '/driver-card': typeof DriverCardRoute
   '/go-karts': typeof GoKartsRoute
   '/laser-tag': typeof LaserTagRoute
+  '/leaderboard': typeof LeaderboardRoute
+  '/operator': typeof OperatorRoute
+  '/pitlane': typeof PitlaneRoute
+  '/racer-portal': typeof RacerPortalRoute
   '/register': typeof RegisterRoute
   '/skill-games': typeof SkillGamesRoute
+  '/telemetry': typeof TelemetryRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin-portal': typeof AdminPortalRoute
+  '/bind-tag': typeof BindTagRoute
   '/contact': typeof ContactRoute
   '/debug': typeof DebugRoute
+  '/driver-card': typeof DriverCardRoute
   '/go-karts': typeof GoKartsRoute
   '/laser-tag': typeof LaserTagRoute
+  '/leaderboard': typeof LeaderboardRoute
+  '/operator': typeof OperatorRoute
+  '/pitlane': typeof PitlaneRoute
+  '/racer-portal': typeof RacerPortalRoute
   '/register': typeof RegisterRoute
   '/skill-games': typeof SkillGamesRoute
+  '/telemetry': typeof TelemetryRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
+    | '/admin-portal'
+    | '/bind-tag'
     | '/contact'
     | '/debug'
+    | '/driver-card'
     | '/go-karts'
     | '/laser-tag'
+    | '/leaderboard'
+    | '/operator'
+    | '/pitlane'
+    | '/racer-portal'
     | '/register'
     | '/skill-games'
+    | '/telemetry'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/admin-portal'
+    | '/bind-tag'
     | '/contact'
     | '/debug'
+    | '/driver-card'
     | '/go-karts'
     | '/laser-tag'
+    | '/leaderboard'
+    | '/operator'
+    | '/pitlane'
+    | '/racer-portal'
     | '/register'
     | '/skill-games'
+    | '/telemetry'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/admin-portal'
+    | '/bind-tag'
     | '/contact'
     | '/debug'
+    | '/driver-card'
     | '/go-karts'
     | '/laser-tag'
+    | '/leaderboard'
+    | '/operator'
+    | '/pitlane'
+    | '/racer-portal'
     | '/register'
     | '/skill-games'
+    | '/telemetry'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AdminPortalRoute: typeof AdminPortalRoute
+  BindTagRoute: typeof BindTagRoute
   ContactRoute: typeof ContactRoute
   DebugRoute: typeof DebugRoute
+  DriverCardRoute: typeof DriverCardRoute
   GoKartsRoute: typeof GoKartsRoute
   LaserTagRoute: typeof LaserTagRoute
+  LeaderboardRoute: typeof LeaderboardRoute
+  OperatorRoute: typeof OperatorRoute
+  PitlaneRoute: typeof PitlaneRoute
+  RacerPortalRoute: typeof RacerPortalRoute
   RegisterRoute: typeof RegisterRoute
   SkillGamesRoute: typeof SkillGamesRoute
+  TelemetryRoute: typeof TelemetryRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/telemetry': {
+      id: '/telemetry'
+      path: '/telemetry'
+      fullPath: '/telemetry'
+      preLoaderRoute: typeof TelemetryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/skill-games': {
       id: '/skill-games'
       path: '/skill-games'
@@ -148,6 +259,34 @@ declare module '@tanstack/react-router' {
       path: '/register'
       fullPath: '/register'
       preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/racer-portal': {
+      id: '/racer-portal'
+      path: '/racer-portal'
+      fullPath: '/racer-portal'
+      preLoaderRoute: typeof RacerPortalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pitlane': {
+      id: '/pitlane'
+      path: '/pitlane'
+      fullPath: '/pitlane'
+      preLoaderRoute: typeof PitlaneRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/operator': {
+      id: '/operator'
+      path: '/operator'
+      fullPath: '/operator'
+      preLoaderRoute: typeof OperatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/leaderboard': {
+      id: '/leaderboard'
+      path: '/leaderboard'
+      fullPath: '/leaderboard'
+      preLoaderRoute: typeof LeaderboardRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/laser-tag': {
@@ -164,6 +303,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GoKartsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/driver-card': {
+      id: '/driver-card'
+      path: '/driver-card'
+      fullPath: '/driver-card'
+      preLoaderRoute: typeof DriverCardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/debug': {
       id: '/debug'
       path: '/debug'
@@ -176,6 +322,20 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bind-tag': {
+      id: '/bind-tag'
+      path: '/bind-tag'
+      fullPath: '/bind-tag'
+      preLoaderRoute: typeof BindTagRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin-portal': {
+      id: '/admin-portal'
+      path: '/admin-portal'
+      fullPath: '/admin-portal'
+      preLoaderRoute: typeof AdminPortalRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -198,13 +358,31 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AdminPortalRoute: AdminPortalRoute,
+  BindTagRoute: BindTagRoute,
   ContactRoute: ContactRoute,
   DebugRoute: DebugRoute,
+  DriverCardRoute: DriverCardRoute,
   GoKartsRoute: GoKartsRoute,
   LaserTagRoute: LaserTagRoute,
+  LeaderboardRoute: LeaderboardRoute,
+  OperatorRoute: OperatorRoute,
+  PitlaneRoute: PitlaneRoute,
+  RacerPortalRoute: RacerPortalRoute,
   RegisterRoute: RegisterRoute,
   SkillGamesRoute: SkillGamesRoute,
+  TelemetryRoute: TelemetryRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

@@ -36,7 +36,9 @@ export function LaserArenaConfig() {
           {/* STEP 01 */}
           <div className="grid md:grid-cols-12 border-b border-border">
             <div className="md:col-span-3 p-6 border-b md:border-b-0 md:border-r border-border bg-card">
-              <div className="font-tech text-[10px] uppercase tracking-[0.3em] text-adrnln">Step 01</div>
+              <div className="font-tech text-[10px] uppercase tracking-[0.3em] text-adrnln">
+                Step 01
+              </div>
               <div className="font-dot text-3xl mt-1">Platform</div>
               <p className="mt-3 text-xs text-muted-foreground font-tech uppercase tracking-[0.18em]">
                 Pick the game format. Defines mission logic, scoring & arena layout.
@@ -70,7 +72,9 @@ export function LaserArenaConfig() {
           {/* STEP 02 */}
           <div className="grid md:grid-cols-12 border-b border-border">
             <div className="md:col-span-3 p-6 border-b md:border-b-0 md:border-r border-border bg-card">
-              <div className="font-tech text-[10px] uppercase tracking-[0.3em] text-adrnln">Step 02</div>
+              <div className="font-tech text-[10px] uppercase tracking-[0.3em] text-adrnln">
+                Step 02
+              </div>
               <div className="font-dot text-3xl mt-1">Tech Tier</div>
               <p className="mt-3 text-xs text-muted-foreground font-tech uppercase tracking-[0.18em]">
                 Phaser specs, vest sensor density, smart arena obstacles.
@@ -104,7 +108,9 @@ export function LaserArenaConfig() {
           {/* STEP 03 */}
           <div className="grid md:grid-cols-12">
             <div className="md:col-span-3 p-6 border-b md:border-b-0 md:border-r border-border bg-card">
-              <div className="font-tech text-[10px] uppercase tracking-[0.3em] text-adrnln">Step 03</div>
+              <div className="font-tech text-[10px] uppercase tracking-[0.3em] text-adrnln">
+                Step 03
+              </div>
               <div className="font-dot text-3xl mt-1">We Build</div>
               <p className="mt-3 text-xs text-muted-foreground font-tech uppercase tracking-[0.18em]">
                 Custom turn-key tactical hardware delivered to your circuit.
@@ -112,12 +118,17 @@ export function LaserArenaConfig() {
             </div>
             <div className="md:col-span-9 p-6 flex flex-col md:flex-row md:items-center justify-between gap-6">
               <div className="font-tech text-xs uppercase tracking-[0.2em] text-muted-foreground space-y-2">
-                <div>FORMAT <span className="text-foreground">/ {format}</span></div>
-                <div>TIER <span className="text-foreground">/ {tier}</span></div>
+                <div>
+                  FORMAT <span className="text-foreground">/ {format}</span>
+                </div>
+                <div>
+                  TIER <span className="text-foreground">/ {tier}</span>
+                </div>
                 <div>
                   CONFIG ID{" "}
                   <span className="text-foreground">
-                    ODS-LT-{tier.slice(0, 2)}-{format.slice(0, 2)}-{(format.length * tier.length * 211).toString(16).toUpperCase()}
+                    ODS-LT-{tier.slice(0, 2)}-{format.slice(0, 2)}-
+                    {(format.length * tier.length * 211).toString(16).toUpperCase()}
                   </span>
                 </div>
               </div>

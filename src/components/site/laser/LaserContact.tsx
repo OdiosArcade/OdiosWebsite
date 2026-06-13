@@ -13,8 +13,8 @@ export function LaserContact() {
         </div>
         <h2 className="font-dot text-5xl md:text-7xl leading-[0.9] max-w-4xl">
           “The future of live-action gaming isn't{" "}
-          <span className="text-muted-foreground">simulated.</span>{" "}
-          It's <span className="text-adrnln text-glow-adrnln">engineered.</span>”
+          <span className="text-muted-foreground">simulated.</span> It's{" "}
+          <span className="text-adrnln text-glow-adrnln">engineered.</span>”
         </h2>
 
         <div className="mt-16 grid grid-cols-12 gap-10">

@@ -21,7 +21,8 @@ export const Route = createFileRoute("/go-karts")({
       { property: "og:title", content: "Go-Karts — Odios Racing" },
       {
         property: "og:description",
-        content: "Engineered chassis, wireless safety, lap-timing & digital cockpits, all built in Kochi.",
+        content:
+          "Engineered chassis, wireless safety, lap-timing & digital cockpits, all built in Kochi.",
       },
     ],
   }),

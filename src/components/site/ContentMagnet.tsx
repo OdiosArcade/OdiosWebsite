@@ -37,7 +37,9 @@ export function ContentMagnet() {
                 ["UGC Hours / Mo.", "180+"],
               ].map(([k, v]) => (
                 <div key={k} className="bg-card p-4">
-                  <div className="font-tech text-[10px] uppercase tracking-[0.25em] text-muted-foreground">{k}</div>
+                  <div className="font-tech text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+                    {k}
+                  </div>
                   <div className="font-dot text-2xl mt-1 text-adrnln">{v}</div>
                 </div>
               ))}

@@ -94,7 +94,8 @@ export const Route = createFileRoute("/skill-games")({
       { property: "og:title", content: "Skill Games — Built for High-Traffic Monetization" },
       {
         property: "og:description",
-        content: "Arcade-grade hardware engineered for malls, FECs and retail entertainment centers.",
+        content:
+          "Arcade-grade hardware engineered for malls, FECs and retail entertainment centers.",
       },
     ],
   }),
@@ -125,13 +126,17 @@ function SkillGamesPage() {
           <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-px bg-border border border-border">
             {profiles.map((p) => (
               <article key={p.code} className="bg-background p-8">
-                <div className="font-tech text-[10px] uppercase tracking-[0.25em] text-adrnln">{p.code}</div>
+                <div className="font-tech text-[10px] uppercase tracking-[0.25em] text-adrnln">
+                  {p.code}
+                </div>
                 <h3 className="mt-2 font-dot text-3xl">{p.title}</h3>
                 <p className="mt-4 text-sm text-muted-foreground leading-relaxed">{p.body}</p>
                 <dl className="mt-6 grid grid-cols-3 gap-px bg-border border border-border">
                   {p.specs.map(([k, v]) => (
                     <div key={k} className="bg-background p-3">
-                      <dt className="font-tech text-[9px] uppercase tracking-[0.25em] text-muted-foreground">{k}</dt>
+                      <dt className="font-tech text-[9px] uppercase tracking-[0.25em] text-muted-foreground">
+                        {k}
+                      </dt>
                       <dd className="font-dot text-lg mt-1">{v}</dd>
                     </div>
                   ))}
@@ -139,7 +144,9 @@ function SkillGamesPage() {
               </article>
             ))}
             <article className="bg-card p-8 flex flex-col justify-center items-start border-dashed">
-              <div className="font-tech text-[10px] uppercase tracking-[0.3em] text-adrnln blink">● IN DEV</div>
+              <div className="font-tech text-[10px] uppercase tracking-[0.3em] text-adrnln blink">
+                ● IN DEV
+              </div>
               <div className="mt-4 font-dot text-2xl text-muted-foreground leading-tight">
                 More engineering profiles coming soon.
               </div>

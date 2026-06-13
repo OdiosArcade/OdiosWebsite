@@ -11,14 +11,15 @@ export function IndustryProblems() {
           ◆ 01 / The Status Quo
         </div>
         <h2 className="font-dot text-4xl md:text-6xl leading-[0.95] max-w-3xl">
-          The industry has been{" "}
-          <span className="text-muted-foreground">coasting.</span>{" "}
+          The industry has been <span className="text-muted-foreground">coasting.</span>{" "}
           <span className="text-adrnln">We're done with that.</span>
         </h2>
         <div className="mt-12 grid md:grid-cols-3 gap-px bg-border border border-border">
           {problems.map(([k, v]) => (
             <div key={k} className="bg-card p-6">
-              <div className="font-tech text-[10px] uppercase tracking-[0.3em] text-adrnln">{k}</div>
+              <div className="font-tech text-[10px] uppercase tracking-[0.3em] text-adrnln">
+                {k}
+              </div>
               <div className="mt-3 font-dot text-2xl leading-tight">{v}</div>
             </div>
           ))}

@@ -38,8 +38,8 @@ function AboutPage() {
             <p>
               Odios is an end-to-end entertainment engineering firm founded by{" "}
               <span className="text-foreground">NIT Calicut alumni</span>, specializing in
-              high-performance recreational hardware built to accelerate future-tech across the Indian
-              entertainment industry.
+              high-performance recreational hardware built to accelerate future-tech across the
+              Indian entertainment industry.
             </p>
             <p>
               We design, manufacture, integrate and operate. Karts, laser tag ecosystems, and skill
@@ -47,7 +47,8 @@ function AboutPage() {
               telemetry, and shipped with a service contract that doesn't disappear after delivery.
             </p>
             <p>
-              The brief is simple. <span className="text-foreground">Whatever the need, we build it.</span>
+              The brief is simple.{" "}
+              <span className="text-foreground">Whatever the need, we build it.</span>
             </p>
           </div>
         </div>
@@ -70,7 +71,9 @@ function AboutPage() {
               ["OPERATIONS", "Service contracts, fleet rotation, training."],
             ].map(([k, v]) => (
               <div key={k} className="bg-card p-6">
-                <div className="font-tech text-[10px] uppercase tracking-[0.3em] text-adrnln">{k}</div>
+                <div className="font-tech text-[10px] uppercase tracking-[0.3em] text-adrnln">
+                  {k}
+                </div>
                 <div className="mt-3 font-dot text-xl leading-tight">{v}</div>
               </div>
             ))}

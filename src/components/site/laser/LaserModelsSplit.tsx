@@ -32,8 +32,7 @@ export function LaserModelsSplit() {
         </div>
         <h2 className="font-dot text-5xl md:text-7xl leading-[0.9] mb-16">
           Two ways to deploy
-          <br />
-          a tactical arena.
+          <br />a tactical arena.
         </h2>
 
         <div className="grid md:grid-cols-2 gap-px bg-border border border-border">

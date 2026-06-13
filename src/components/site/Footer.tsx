@@ -11,8 +11,8 @@ export function Footer() {
           </div>
           <blockquote className="col-span-12 lg:col-span-10">
             <p className="font-dot text-2xl sm:text-3xl md:text-5xl lg:text-6xl leading-[1.1]">
-              “I started racing go-karts<span className="text-adrnln">.</span> It's the
-              most breathtaking sport in the world.”
+              “I started racing go-karts<span className="text-adrnln">.</span> It's the most
+              breathtaking sport in the world.”
             </p>
             <footer className="mt-6 font-tech text-[11px] uppercase tracking-[0.3em] text-muted-foreground">
               — Ayrton Senna · 1960–1994
@@ -30,8 +30,8 @@ export function Footer() {
               </span>
             </div>
             <p className="mt-6 max-w-md text-muted-foreground">
-              An entertainment engineering firm building the next generation of
-              recreational hardware for India.
+              An entertainment engineering firm building the next generation of recreational
+              hardware for India.
             </p>
 
             <div className="mt-10 inline-flex items-center gap-4 border border-border bg-card px-5 py-3">
@@ -57,7 +57,10 @@ export function Footer() {
                 ["/contact", "Contact"],
               ].map(([to, label]) => (
                 <li key={to}>
-                  <Link to={to} className="text-muted-foreground hover:text-foreground transition-colors">
+                  <Link
+                    to={to}
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                  >
                     {label}
                   </Link>
                 </li>
@@ -70,14 +73,23 @@ export function Footer() {
               Direct Line
             </div>
             <div className="font-dot text-2xl">Sabari Suresh</div>
-            <a href="mailto:sabari@odios.in" className="block text-sm text-muted-foreground hover:text-foreground">
+            <a
+              href="mailto:sabari@odios.in"
+              className="block text-sm text-muted-foreground hover:text-foreground"
+            >
               sabari@odios.in
             </a>
             <div className="mt-4 font-dot text-2xl">Athul Krishna</div>
-            <a href="mailto:athul@odios.in" className="block text-sm text-muted-foreground hover:text-foreground">
+            <a
+              href="mailto:athul@odios.in"
+              className="block text-sm text-muted-foreground hover:text-foreground"
+            >
               athul@odios.in
             </a>
-            <a href="mailto:sales@odios.in" className="block mt-4 font-tech text-xs uppercase tracking-[0.2em] text-adrnln">
+            <a
+              href="mailto:sales@odios.in"
+              className="block mt-4 font-tech text-xs uppercase tracking-[0.2em] text-adrnln"
+            >
               sales@odios.in →
             </a>
           </div>

@@ -206,12 +206,8 @@ function SkillRender({ src, alt }: { src: string; alt: string }) {
 
       {/* bottom labels */}
       <div className="absolute bottom-4 left-4 right-4 z-20">
-        <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-neutral-400">
-          
-        </div>
-        <div className="mt-2 font-mono text-[10px] uppercase tracking-[0.2em] text-neutral-500">
-          
-        </div>
+        <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-neutral-400"></div>
+        <div className="mt-2 font-mono text-[10px] uppercase tracking-[0.2em] text-neutral-500"></div>
       </div>
     </div>
   );

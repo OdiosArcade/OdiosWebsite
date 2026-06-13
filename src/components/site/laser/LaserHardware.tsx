@@ -7,8 +7,7 @@ const stack = [
     code: "H/01",
     title: "Phaser Unit",
     img: phaser,
-    body:
-      "Precision optics, aluminum-reinforced chassis, and millisecond haptic feedback response.",
+    body: "Precision optics, aluminum-reinforced chassis, and millisecond haptic feedback response.",
     specs: [
       ["OPTICS", "PRECISION"],
       ["CHASSIS", "6061 ALU"],
@@ -19,8 +18,7 @@ const stack = [
     code: "H/02",
     title: "Tactical Vest & Sensors",
     img: vest,
-    body:
-      "Advanced multi-zone hit detection with real-time vibrational telemetry per sensor.",
+    body: "Advanced multi-zone hit detection with real-time vibrational telemetry per sensor.",
     specs: [
       ["ZONES", "12 / VEST"],
       ["TELEMETRY", "REALTIME"],
@@ -31,8 +29,7 @@ const stack = [
     code: "H/03",
     title: "Master Control Hub",
     img: hub,
-    body:
-      "Seamless wireless arena synchronization for automated game management and player tracking.",
+    body: "Seamless wireless arena synchronization for automated game management and player tracking.",
     specs: [
       ["MESH", "2.4 GHZ"],
       ["CAP.", "64 PLAYERS"],
@@ -60,10 +57,7 @@ export function LaserHardware() {
 
         <div className="grid md:grid-cols-3 gap-6">
           {stack.map((c) => (
-            <article
-              key={c.code}
-              className="group relative glass p-6 hover-lift transition-all"
-            >
+            <article key={c.code} className="group relative glass p-6 hover-lift transition-all">
               {/* HUD corner brackets */}
               <span className="pointer-events-none absolute top-2 left-2 w-3 h-3 border-t border-l border-adrnln opacity-0 group-hover:opacity-100 transition-opacity" />
               <span className="pointer-events-none absolute top-2 right-2 w-3 h-3 border-t border-r border-adrnln opacity-0 group-hover:opacity-100 transition-opacity" />

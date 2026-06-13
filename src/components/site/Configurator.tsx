@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const powertrains = ["IC ENGINE", "ELECTRIC MOTOR"] as const;
-type Powertrain = typeof powertrains[number];
+type Powertrain = (typeof powertrains)[number];
 
 const platformInfo: { key: string; blurb: string }[] = [
   { key: "RENTAL", blurb: "High reliability & safety. Built for repeat sessions." },
@@ -47,10 +47,12 @@ export function Configurator() {
               of the machine.
             </h2>
             <p className="mt-6 max-w-2xl text-muted-foreground">
-              Start with the powertrain. Pick a platform — <span className="text-foreground">Rental</span> for reliability,{" "}
+              Start with the powertrain. Pick a platform —{" "}
+              <span className="text-foreground">Rental</span> for reliability,{" "}
               <span className="text-foreground">Drift</span> for sideways theatrics,{" "}
               <span className="text-foreground">Race</span> for pure pace, or{" "}
-              <span className="text-foreground">Shifter</span> for sequential-gearbox motorsport. Stack the tech. We build.
+              <span className="text-foreground">Shifter</span> for sequential-gearbox motorsport.
+              Stack the tech. We build.
             </p>
           </div>
         </div>
@@ -59,7 +61,9 @@ export function Configurator() {
           {/* STEP 1 — POWERTRAIN */}
           <div className="grid md:grid-cols-12 border-b border-border">
             <div className="md:col-span-3 p-6 border-b md:border-b-0 md:border-r border-border bg-card">
-              <div className="font-tech text-[10px] uppercase tracking-[0.3em] text-adrnln">Step 01</div>
+              <div className="font-tech text-[10px] uppercase tracking-[0.3em] text-adrnln">
+                Step 01
+              </div>
               <div className="font-dot text-3xl mt-1">Powertrain</div>
               <p className="mt-3 text-xs text-muted-foreground font-tech uppercase tracking-[0.18em]">
                 IC for raw character & shift-work. Electric for silent, instant torque.
@@ -88,7 +92,9 @@ export function Configurator() {
           {/* STEP 2 — PLATFORM */}
           <div className="grid md:grid-cols-12 border-b border-border">
             <div className="md:col-span-3 p-6 border-b md:border-b-0 md:border-r border-border bg-card">
-              <div className="font-tech text-[10px] uppercase tracking-[0.3em] text-adrnln">Step 02</div>
+              <div className="font-tech text-[10px] uppercase tracking-[0.3em] text-adrnln">
+                Step 02
+              </div>
               <div className="font-dot text-3xl mt-1">Platform</div>
               <p className="mt-3 text-xs text-muted-foreground font-tech uppercase tracking-[0.18em]">
                 Chassis archetype. Determines geometry, drivetrain & class certification.
@@ -117,7 +123,9 @@ export function Configurator() {
                     </div>
                     <div className="font-dot text-2xl mt-2">{p.key}</div>
                     <p className="mt-2 text-[11px] text-muted-foreground font-tech uppercase tracking-[0.15em] leading-relaxed">
-                      {disabled ? "Disabled — sequential gearbox not applicable to electric." : p.blurb}
+                      {disabled
+                        ? "Disabled — sequential gearbox not applicable to electric."
+                        : p.blurb}
                     </p>
                     {active && <div className="absolute top-3 right-3 text-xs">●</div>}
                   </button>
@@ -129,7 +137,9 @@ export function Configurator() {
           {/* STEP 3 — TECH STACK */}
           <div className="grid md:grid-cols-12 border-b border-border">
             <div className="md:col-span-3 p-6 border-b md:border-b-0 md:border-r border-border bg-card">
-              <div className="font-tech text-[10px] uppercase tracking-[0.3em] text-adrnln">Step 03</div>
+              <div className="font-tech text-[10px] uppercase tracking-[0.3em] text-adrnln">
+                Step 03
+              </div>
               <div className="font-dot text-3xl mt-1">Tech-stack</div>
               <p className="mt-3 text-xs text-muted-foreground font-tech uppercase tracking-[0.18em]">
                 Modular subsystems. Add or remove without touching the chassis.
@@ -148,7 +158,9 @@ export function Configurator() {
                       <div className="font-tech text-[10px] uppercase tracking-[0.25em] opacity-70">
                         T-{String(stacks.indexOf(s) + 1).padStart(2, "0")}
                       </div>
-                      <div className={`w-3 h-3 border ${active ? "bg-adrnln border-adrnln" : "border-border"}`} />
+                      <div
+                        className={`w-3 h-3 border ${active ? "bg-adrnln border-adrnln" : "border-border"}`}
+                      />
                     </div>
                     <div className="font-dot text-2xl mt-2">{s}</div>
                   </button>
@@ -160,7 +172,9 @@ export function Configurator() {
           {/* STEP 4 — BUILD */}
           <div className="grid md:grid-cols-12">
             <div className="md:col-span-3 p-6 border-b md:border-b-0 md:border-r border-border bg-card">
-              <div className="font-tech text-[10px] uppercase tracking-[0.3em] text-adrnln">Step 04</div>
+              <div className="font-tech text-[10px] uppercase tracking-[0.3em] text-adrnln">
+                Step 04
+              </div>
               <div className="font-dot text-3xl mt-1">We Build</div>
               <p className="mt-3 text-xs text-muted-foreground font-tech uppercase tracking-[0.18em]">
                 Hand-assembled in our Kochi workshop. Lead time 12–16 weeks.
@@ -187,7 +201,9 @@ export function Configurator() {
                   CONFIG ID{" "}
                   <span className="text-foreground">
                     ODS-{power === "IC ENGINE" ? "IC" : "EV"}-{platform.slice(0, 2)}-
-                    {((platform.length + power.length) * (picked.size + 1) * 137).toString(16).toUpperCase()}
+                    {((platform.length + power.length) * (picked.size + 1) * 137)
+                      .toString(16)
+                      .toUpperCase()}
                   </span>
                 </div>
               </div>
@@ -202,7 +218,8 @@ export function Configurator() {
         </div>
 
         <p className="mt-6 text-center font-dot text-2xl md:text-3xl text-muted-foreground">
-          “Forget standard models. <span className="text-foreground">You choose the soul of the machine.</span>”
+          “Forget standard models.{" "}
+          <span className="text-foreground">You choose the soul of the machine.</span>”
         </p>
       </div>
     </section>

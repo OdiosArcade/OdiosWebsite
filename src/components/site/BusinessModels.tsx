@@ -1,4 +1,10 @@
-export type Model = { code: string; title: string; tag?: string; body: string; bullets: [string, string][] };
+export type Model = {
+  code: string;
+  title: string;
+  tag?: string;
+  body: string;
+  bullets: [string, string][];
+};
 
 const defaultModels: Model[] = [
   {
@@ -44,9 +50,18 @@ const defaultModels: Model[] = [
   },
 ];
 
-export function BusinessModels({ models = defaultModels, sectionNumber = "05" }: { models?: Model[]; sectionNumber?: string }) {
+export function BusinessModels({
+  models = defaultModels,
+  sectionNumber = "05",
+}: {
+  models?: Model[];
+  sectionNumber?: string;
+}) {
   return (
-    <section id="business" className="relative py-24 md:py-28 lg:py-40 border-t border-border bg-card">
+    <section
+      id="business"
+      className="relative py-24 md:py-28 lg:py-40 border-t border-border bg-card"
+    >
       <div className="absolute inset-0 dot-grid opacity-30" aria-hidden />
       <div className="relative mx-auto max-w-[1400px] px-6 md:px-8 lg:px-10">
         <div className="font-tech text-[11px] uppercase tracking-[0.4em] text-adrnln mb-4">
@@ -73,8 +88,13 @@ export function BusinessModels({ models = defaultModels, sectionNumber = "05" }:
               <p className="mt-4 text-sm text-muted-foreground">{m.body}</p>
               <ul className="mt-8 space-y-4">
                 {m.bullets.map(([k, v]) => (
-                  <li key={k} className="grid grid-cols-[auto_1fr] gap-3 border-t border-border pt-4">
-                    <span className="font-tech text-[10px] uppercase tracking-[0.25em] text-adrnln pt-0.5">{k}</span>
+                  <li
+                    key={k}
+                    className="grid grid-cols-[auto_1fr] gap-3 border-t border-border pt-4"
+                  >
+                    <span className="font-tech text-[10px] uppercase tracking-[0.25em] text-adrnln pt-0.5">
+                      {k}
+                    </span>
                     <span className="text-xs text-muted-foreground">{v}</span>
                   </li>
                 ))}

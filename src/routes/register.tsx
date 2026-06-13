@@ -72,8 +72,7 @@ function RegisterPage() {
         email: parsed.data.email,
         password: parsed.data.password,
         options: {
-          emailRedirectTo:
-            typeof window !== "undefined" ? window.location.origin : undefined,
+          emailRedirectTo: typeof window !== "undefined" ? window.location.origin : undefined,
           data: {
             username: parsed.data.username,
             mobile_number: parsed.data.mobile_number,
@@ -118,9 +117,8 @@ function RegisterPage() {
           <div className="rounded-lg border border-white/15 bg-white/5 p-6">
             <h2 className="text-lg font-semibold">Check your email</h2>
             <p className="mt-2 text-sm text-white/70">
-              We sent a confirmation link to{" "}
-              <span className="text-white">{form.email}</span>. Tap it to activate
-              your Odios profile.
+              We sent a confirmation link to <span className="text-white">{form.email}</span>. Tap
+              it to activate your Odios profile.
             </p>
           </div>
         ) : (

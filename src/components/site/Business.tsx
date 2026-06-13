@@ -16,21 +16,29 @@ export function Business() {
           <article className="bg-card p-8 md:p-12">
             <div className="flex items-center justify-between font-tech text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
               <span>MODEL A</span>
-              <span className="text-adrnln">●  ACTIVE</span>
+              <span className="text-adrnln">● ACTIVE</span>
             </div>
             <h3 className="mt-6 font-dot text-4xl md:text-5xl">Sales &amp; Rentals</h3>
             <p className="mt-4 text-muted-foreground max-w-md">
-              For operators that want machines on their own track — backed by an engineering
-              team that doesn't disappear after delivery.
+              For operators that want machines on their own track — backed by an engineering team
+              that doesn't disappear after delivery.
             </p>
             <ul className="mt-8 space-y-4">
               {[
-                ["ZERO-STRESS UPKEEP", "Annual service contracts, on-site spares, telemetry-driven maintenance."],
-                ["TOTAL OWNERSHIP", "Outright purchase or 36-mo lease. Your asset, your branding, your revenue."],
+                [
+                  "ZERO-STRESS UPKEEP",
+                  "Annual service contracts, on-site spares, telemetry-driven maintenance.",
+                ],
+                [
+                  "TOTAL OWNERSHIP",
+                  "Outright purchase or 36-mo lease. Your asset, your branding, your revenue.",
+                ],
                 ["FLEET TELEMETRY", "Web dashboard, lap analytics, driver leaderboard included."],
               ].map(([k, v]) => (
                 <li key={k} className="grid grid-cols-[auto_1fr] gap-4 border-t border-border pt-4">
-                  <span className="font-tech text-[10px] uppercase tracking-[0.25em] text-adrnln pt-1">{k}</span>
+                  <span className="font-tech text-[10px] uppercase tracking-[0.25em] text-adrnln pt-1">
+                    {k}
+                  </span>
                   <span className="text-sm text-muted-foreground">{v}</span>
                 </li>
               ))}
@@ -46,8 +54,8 @@ export function Business() {
             </div>
             <h3 className="mt-6 font-dot text-4xl md:text-5xl">Franchising</h3>
             <p className="mt-4 text-muted-foreground max-w-md">
-              Launch an Odios-branded venue in your city. Turnkey hardware, brand,
-              and operations playbook.
+              Launch an Odios-branded venue in your city. Turnkey hardware, brand, and operations
+              playbook.
             </p>
 
             <div className="mt-8 border border-adrnln p-6">
@@ -72,7 +80,9 @@ export function Business() {
                 ["REV-SHARE", "Transparent royalty model. No hidden lock-ins."],
               ].map(([k, v]) => (
                 <li key={k} className="grid grid-cols-[auto_1fr] gap-4 border-t border-border pt-4">
-                  <span className="font-tech text-[10px] uppercase tracking-[0.25em] text-adrnln pt-1">{k}</span>
+                  <span className="font-tech text-[10px] uppercase tracking-[0.25em] text-adrnln pt-1">
+                    {k}
+                  </span>
                   <span className="text-sm text-muted-foreground">{v}</span>
                 </li>
               ))}

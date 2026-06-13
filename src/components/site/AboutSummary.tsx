@@ -16,9 +16,9 @@ export function AboutSummary() {
               <span className="text-adrnln">the game.</span>
             </h2>
             <p className="mt-8 max-w-2xl text-base lg:text-lg text-muted-foreground leading-relaxed">
-              An end-to-end entertainment engineering firm founded by NIT Calicut alumni — specializing
-              in high-performance recreational hardware built to accelerate future-tech across the Indian
-              entertainment industry.
+              An end-to-end entertainment engineering firm founded by NIT Calicut alumni —
+              specializing in high-performance recreational hardware built to accelerate future-tech
+              across the Indian entertainment industry.
             </p>
             <Link
               to="/about"

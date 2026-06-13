@@ -57,8 +57,8 @@ export function Hardware() {
             </h2>
           </div>
           <p className="hidden lg:block max-w-sm text-sm text-muted-foreground leading-relaxed">
-            Three engineered subsystems, each designed to outperform the imported
-            standard. Hover any unit to expose its anatomy.
+            Three engineered subsystems, each designed to outperform the imported standard. Hover
+            any unit to expose its anatomy.
           </p>
         </div>
 
@@ -90,9 +90,7 @@ export function Hardware() {
                   {it.feature}
                 </div>
                 <h3 className="mt-2 font-dot text-3xl">{it.name}</h3>
-                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                  {it.desc}
-                </p>
+                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{it.desc}</p>
                 <dl className="mt-6 grid grid-cols-3 gap-px bg-border border border-border">
                   {it.specs.map(([k, v]) => (
                     <div key={k} className="bg-background p-3">
