@@ -12,8 +12,9 @@ interface TrackAsset {
 }
 
 interface ActiveAssignment {
+  id: number; // 🌟 Crucial fix: Track the unique row ID entry
   kart_id: string;
-  profile_id: uuid;
+  profile_id: string;
   total_laps_allocated: number;
   laps_remaining: number;
   assigned_at: string;
@@ -65,6 +66,7 @@ function TelemetryTerminal() {
       const { data } = await supabase
         .from('active_assignments')
         .select(`
+          id,
           kart_id,
           profile_id,
           total_laps_allocated,
@@ -72,7 +74,7 @@ function TelemetryTerminal() {
           assigned_at,
           profiles ( username ),
           karts ( kart_number )
-        `)
+        `) // 🌟 Crucial fix: Selected the unique row 'id' column from Supabase
         .eq('track_id', trackId)
         .gt('laps_remaining', 0)
         .order('assigned_at', { ascending: true });
@@ -96,15 +98,14 @@ function TelemetryTerminal() {
 
     setLoading(true);
     try {
-      // 1. Fire completed loop time straight into transactional history records
+      // 1. Fire completed loop time straight into database
       const { error: lapError } = await supabase
         .from('lap_records')
         .insert({
           profile_id: session.profile_id,
           track_id: selectedTrackId,
           kart_id: session.kart_id,
-          lap_time_seconds: parsedTime,
-          xp_earned: parsedTime < 20.0 ? 300 : 100
+          lap_time_seconds: parsedTime
         });
 
       if (lapError) throw lapError;
@@ -113,14 +114,17 @@ function TelemetryTerminal() {
       const remainingLaps = session.laps_remaining - 1;
 
       if (remainingLaps <= 0) {
-        // Drop staging row once racing target hits full completion boundaries
-        await supabase.from('active_assignments').delete().eq('kart_id', session.kart_id);
+        // 🌟 Crucial fix: Only drop the specific completed ticket assignment row using its unique ID
+        await supabase
+          .from('active_assignments')
+          .delete()
+          .eq('id', session.id);
       } else {
-        // Safely update staging data points line metrics numbers
+        // 🌟 Crucial fix: Safely update only the active driver's lap metric using its unique row ID
         await supabase
           .from('active_assignments')
           .update({ laps_remaining: remainingLaps })
-          .eq('kart_id', session.kart_id);
+          .eq('id', session.id);
       }
 
       await fetchLiveTrackTelemetry(selectedTrackId);
@@ -170,8 +174,8 @@ function TelemetryTerminal() {
               </tr>
             </thead>
             <tbody>
-              {activeHeats.map((heat, idx) => (
-                <tr key={`${heat.kart_id}-${idx}`} className="border-b border-neutral-900 hover:bg-neutral-950/40">
+              {activeHeats.map((heat) => (
+                <tr key={heat.id} className="border-b border-neutral-900 hover:bg-neutral-950/40">
                   <td className="p-3 text-orange-400 font-bold font-tech">CHASSIS #{heat.karts?.kart_number}</td>
                   <td className="p-3 text-white font-sans font-bold">{heat.profiles?.username}</td>
                   <td className="p-3 text-center text-emerald-400 font-bold">

@@ -1,10 +1,30 @@
-@import "tailwindcss" source(none);
+@import "tailwindcss";
 @import "tw-animate-css";
 
-@source "../src";
-@custom-variant dark (&:is(.dark *));
 
-@theme inline {
+/* ⚡ DEFINE FONTS VIA @FONT-FACE TO BYPASS THE COMPILER BUG ⚡ */
+@font-face {
+  font-family: 'Share Tech Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sharetechmono/v15/J7aUxJu10wNBY9bKv8Z7fI9vDr1KvM5P.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v16/V8mDo3vJE7i9668EToXhzFFXkaQOBWv6_UAn07u5.woff2) format('woff2');
+}
+
+/* Removed non-standard at-rules (@source, @custom-variant, @theme) to keep plain CSS.
+   The theme aliases and font targets are moved into :root below so variables work
+   in standard CSS pipelines. */
+
+:root {
+  /* Theme aliases and font targets (moved from non-standard @theme block) */
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -29,12 +49,9 @@
   --color-ring: var(--ring);
   --color-adrnln: var(--adrnln);
   --color-adrnln-foreground: var(--adrnln-foreground);
-  --font-mono-dot: 'VT323', monospace;
+  --font-mono-dot: 'Share Tech Mono', monospace;
   --font-mono-tech: 'Share Tech Mono', monospace;
   --font-sans: 'Space Grotesk', system-ui, sans-serif;
-}
-
-:root {
   --radius: 0.25rem;
   --background: oklch(0 0 0);
   --foreground: oklch(0.99 0 0);
@@ -54,7 +71,7 @@
   --destructive-foreground: oklch(0.99 0 0);
   --border: oklch(0.22 0 0);
   --input: oklch(0.18 0 0);
-  --ring: oklch(0.62 0.24 27);
+  --ring: rgb(245, 32, 39);
   --adrnln: oklch(0.62 0.245 27.5);
   --adrnln-foreground: oklch(0.99 0 0);
 }
@@ -76,7 +93,11 @@
 }
 
 @layer utilities {
-  .font-dot { font-family: var(--font-mono-dot); letter-spacing: 0.04em; }
+  .font-dot { 
+    font-family: var(--font-mono-dot); 
+    letter-spacing: 0.02em; 
+    font-weight: 400; 
+  }
   .font-tech { font-family: var(--font-mono-tech); }
   .text-adrnln { color: var(--color-adrnln); }
   .bg-adrnln { background-color: var(--color-adrnln); }

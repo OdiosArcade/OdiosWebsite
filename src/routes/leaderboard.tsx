@@ -107,7 +107,6 @@ function BlacklistLeaderboard() {
   };
 
   // REQUIREMENT 3: Fetch absolute Top 100 XP score accounts profiles registry
-  // REQUIREMENT 3: Fetch absolute Top 100 XP score accounts profiles registry
   const fetchGlobalXpLeaderboard = async () => {
     try {
       const { data } = await supabase
@@ -127,140 +126,160 @@ function BlacklistLeaderboard() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white p-6 grid-bg scanlines">
+    <div className="min-h-screen bg-background text-white p-4 md:p-8 grid-bg scanlines">
       
       {/* HEADER BANNER SECTION */}
-      <header className="border-b border-neutral-800 pb-4 mb-8 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-2">
+      <header className="border-b border-border/40 pb-6 mb-8 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
         <div>
-          <span className="bg-red-600 text-white font-mono px-2 py-0.5 text-[10px] font-bold tracking-widest uppercase animate-pulse">
+          <span className="bg-adrnln text-background font-dot px-2.5 py-1 text-[9px] font-bold tracking-widest uppercase animate-pulse">
             CRITERION LEAGUE DATA ARRAYS
           </span>
-          <h1 className="text-3xl font-extrabold tracking-wider font-tech text-white mt-1">THE ODIOS LEADERBOARDS</h1>
+          <h1 className="text-3xl font-extrabold tracking-tight font-sans text-white mt-3 uppercase">THE ODIOS LEADERBOARDS</h1>
         </div>
-        <p className="text-xs font-mono text-neutral-500 uppercase tracking-widest">
+        <p className="text-[10px] font-dot text-neutral-500 uppercase tracking-widest border border-border/20 bg-card/40 px-3 py-1.5 hidden sm:block">
           NODE // LIVE_RACER_ standings
         </p>
       </header>
 
       {/* METRIC GRIDS WORKSPACE LAYOUT */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         
         {/* COLUMN 1: REQUIREMENT 1 - TRACK CHAMPIONS GRID MATRIX */}
-        <section className="glass p-6 border border-neutral-800 bg-neutral-950/40 rounded-none h-fit">
-          <div className="border-l-2 border-red-600 pl-3 mb-6">
-            <h2 className="text-sm font-bold font-tech uppercase tracking-wide text-white">01 // Circuit Champions</h2>
-            <p className="text-[11px] text-neutral-500 font-mono">The reigning #1 fastest drivers on each track loop.</p>
+        <section className="lg:col-span-4 glass p-6 border border-border/40 bg-card/40 rounded-none h-fit shadow-lg relative overflow-hidden">
+          <div className="border-l-4 border-adrnln pl-3 mb-6 relative z-10">
+            <h2 className="text-sm font-bold font-sans uppercase tracking-widest text-white">01 // Circuit Champions</h2>
+            <p className="text-[10px] text-neutral-500 font-dot tracking-widest mt-1 uppercase">Reigning #1 absolute lap holders.</p>
           </div>
 
-          <div className="space-y-3 font-mono text-xs">
+          <div className="space-y-4 relative z-10">
             {trackChampions.length > 0 ? (
               trackChampions.map((champ, index) => (
-                <div key={`${champ.track_id}-${index}`} className="border border-red-900/30 bg-black/60 p-3 flex justify-between items-center">
+                <div key={`${champ.track_id}-${index}`} className="border border-border/20 bg-background/60 p-4 flex justify-between items-center transition-all hover-lift hover:border-adrnln/40">
                   <div>
-                    <span className="text-[9px] bg-red-950 text-red-400 border border-red-900 font-bold px-1 py-0.5 rounded-none block w-fit mb-1 uppercase">
+                    <span className="text-[9px] bg-adrnln/10 text-adrnln border border-adrnln/20 font-dot font-bold px-2 py-0.5 rounded-none block w-fit mb-2 uppercase tracking-widest">
                       🏁 {champ.tracks?.name || 'NODE REFUGE'}
                     </span>
-                    <div className="text-white font-bold text-sm font-sans">{champ.profiles?.username}</div>
+                    <div className="text-white font-bold text-base font-sans truncate">{champ.profiles?.username}</div>
                   </div>
                   <div className="text-right">
-                    <span className="text-red-500 font-bold font-tech tracking-wide text-sm">{champ.profiles?.total_xp}</span>
-                    <div className="text-[9px] text-neutral-500 uppercase tracking-tighter mt-0.5">SCORE TOTAL XP</div>
+                    <span className="text-adrnln font-bold font-dot tracking-wider text-xl text-glow-adrnln">{champ.profiles?.total_xp}</span>
+                    <div className="text-[9px] text-neutral-500 font-dot uppercase tracking-widest mt-0.5">TOTAL XP</div>
                   </div>
                 </div>
               ))
             ) : (
-              <div className="text-center py-8 text-neutral-600 uppercase tracking-widest border border-dashed border-neutral-900">
+              <div className="text-center py-10 text-[10px] text-neutral-600 uppercase font-dot tracking-widest border border-dashed border-border/20 bg-background/20">
                 [ NO TRACK RANK #1 FOUND ]
               </div>
             )}
           </div>
+          
+          {/* Subtle background detail */}
+          <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none">
+             <span className="font-dot text-8xl font-black">01</span>
+          </div>
         </section>
 
         {/* COLUMN 2: REQUIREMENT 2 - TRACK INTERACTIVE BLACKLIST FILTER */}
-        <section className="glass p-6 border border-neutral-800 bg-neutral-950/40 rounded-none h-fit">
-          <div className="border-l-2 border-orange-500 pl-3 mb-4">
-            <h2 className="text-sm font-bold font-tech uppercase tracking-wide text-white">02 // Circuit Specific Blacklist</h2>
-            <p className="text-[11px] text-neutral-500 font-mono">Query entire standings across custom sector fields.</p>
+        <section className="lg:col-span-4 glass p-6 border border-border/40 bg-card/40 rounded-none h-fit shadow-lg relative overflow-hidden">
+          <div className="border-l-4 border-neutral-500 pl-3 mb-6 relative z-10">
+            <h2 className="text-sm font-bold font-sans uppercase tracking-widest text-white">02 // Circuit Blacklist</h2>
+            <p className="text-[10px] text-neutral-500 font-dot tracking-widest mt-1 uppercase">Query entire circuit sector fields.</p>
           </div>
 
           {/* DYNAMIC DROP-DOWN PICKER TRACK ID LINK */}
-          <div className="mb-6 font-mono text-xs">
-            <label className="block text-[10px] uppercase text-neutral-500 mb-2 tracking-widest">// TARGET INTERACTIVE CIRCUIT NODE</label>
-            <select
-              value={selectedTrackId}
-              onChange={(e) => setSelectedTrackId(e.target.value)}
-              className="w-full bg-black border border-neutral-800 px-4 py-3 text-white font-mono focus:outline-none focus:border-orange-500 rounded-none"
-            >
-              <option value="">-- SELECT CIRCUIT NODE MAP --</option>
-              {availableTracks.map(t => (
-                <option key={t.id} value={t.id}>{t.name.toUpperCase()}</option>
-              ))}
-            </select>
+          <div className="mb-6 relative z-10">
+            <label className="block text-[10px] font-dot uppercase text-neutral-500 mb-2 tracking-widest">// TARGET INTERACTIVE CIRCUIT NODE</label>
+            <div className="relative">
+              <select
+                value={selectedTrackId}
+                onChange={(e) => setSelectedTrackId(e.target.value)}
+                className="w-full bg-background border border-border/40 px-4 py-3.5 text-white font-dot text-xs focus:outline-none focus:border-adrnln focus:ring-1 focus:ring-adrnln rounded-none appearance-none cursor-pointer transition-all shadow-inner relative z-10"
+              >
+                <option value="">-- SELECT CIRCUIT NODE MAP --</option>
+                {availableTracks.map(t => (
+                  <option key={t.id} value={t.id}>{t.name.toUpperCase()}</option>
+                ))}
+              </select>
+              {/* Custom Dropdown Chevron for Technical Feel */}
+              <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none z-20 text-adrnln font-dot text-xs">
+                ▼
+              </div>
+            </div>
           </div>
 
-          <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse font-mono text-xs">
-              <thead>
-                <tr className="border-b border-neutral-800 text-neutral-500 bg-black">
-                  <th className="p-2 w-12 text-center uppercase">RANK</th>
-                  <th className="p-2 uppercase">PILOT</th>
-                  <th className="p-2 text-right uppercase">TOTAL SCORE</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredBlacklist.length > 0 ? (
-                  filteredBlacklist.map((row) => (
-                    <tr key={row.rank_position} className="border-b border-neutral-900 hover:bg-neutral-950/40 transition-colors">
-                      <td className="p-2 text-center">
-                        <span className={`inline-block px-1 py-0.5 text-[10px] font-bold ${row.rank_position === 1 ? 'bg-orange-500 text-black' : 'text-neutral-500 border border-neutral-800 bg-neutral-950'}`}>
-                          #{row.rank_position}
-                        </span>
-                      </td>
-                      <td className="p-2 text-white font-bold font-sans">
-                        {row.profiles?.username}
-                        <span className="font-mono text-[9px] text-neutral-600 block">LEVEL {row.profiles?.current_level}</span>
-                      </td>
-                      <td className="p-2 text-right text-orange-400 font-bold">{row.profiles?.total_xp} XP</td>
-                    </tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td colSpan={3} className="p-8 text-center text-neutral-700 uppercase tracking-wider">
-                      {selectedTrackId ? '[ NO ACTIVE SPEEDS RECORDED ON CIRCUIT ]' : '[ SELECT NODE LAYER DROPDOWN ]'}
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        {/* COLUMN 3: REQUIREMENT 3 - GLOBAL ELITE TOP 100 TOTAL XP STREAM */}
-        <section className="glass p-6 border border-neutral-800 bg-neutral-950/40 rounded-none h-fit">
-          <div className="border-l-2 border-purple-500 pl-3 mb-6">
-            <h2 className="text-sm font-bold font-tech uppercase tracking-wide text-white">03 // Global Elite Rankings (Top 100)</h2>
-            <p className="text-[11px] text-neutral-500 font-mono">Absolute leaderboard sorted by total lifetime points accruals.</p>
-          </div>
-
-          {/* STREAM TERMINAL CONTAINER WITH SCROLL OVERRIDES */}
-          <div className="max-h-[500px] overflow-y-auto pr-2 space-y-1.5 scrollbar-thin">
-            {globalXpRank.length > 0 ? (
-              globalXpRank.map((pilot, idx) => (
-                <div key={pilot.id} className="border border-neutral-900 bg-neutral-950/80 p-2.5 flex justify-between items-center font-mono text-xs hover:border-purple-900/60 transition-colors">
-                  <div className="flex items-center space-x-3">
-                    <span className="text-neutral-600 font-bold w-6 text-right">{(idx + 1).toString().padStart(2, '0')}</span>
-                    <span className="text-white font-sans font-bold tracking-tight">{pilot.username}</span>
+          <div className="flex flex-col space-y-2 relative z-10">
+            {/* Grid Header */}
+            <div className="grid grid-cols-[3rem_1fr_5rem] gap-3 px-3 py-2.5 border-b border-border/40 text-[9px] font-dot text-neutral-500 uppercase tracking-widest bg-background/40">
+              <div className="text-center">POS</div>
+              <div>PILOT</div>
+              <div className="text-right">SCORE</div>
+            </div>
+            
+            {/* Grid Body */}
+            {filteredBlacklist.length > 0 ? (
+              filteredBlacklist.map((row) => (
+                <div key={row.rank_position} className={`grid grid-cols-[3rem_1fr_5rem] gap-3 items-center px-3 py-3 border transition-all hover-lift ${row.rank_position === 1 ? 'border-adrnln/60 bg-adrnln/5 shadow-[0_0_15px_rgba(var(--color-adrnln),0.1)] glow-adrnln z-10 scale-[1.01]' : 'border-border/20 bg-background/60 hover:border-border/40'}`}>
+                  <div className="text-center">
+                    <span className={`inline-flex items-center justify-center w-7 h-7 text-[10px] font-bold font-dot ${row.rank_position === 1 ? 'bg-adrnln text-background shadow-md' : 'bg-background border border-border/40 text-neutral-400'}`}>
+                      #{row.rank_position}
+                    </span>
                   </div>
-                  <div className="text-purple-400 font-bold font-tech tracking-wider text-sm">
-                    {pilot.total_xp.toLocaleString()} <span className="text-[9px] text-neutral-600 font-mono">XP</span>
+                  <div className="text-white font-bold font-sans text-sm truncate">
+                    {row.profiles?.username}
+                    <span className="font-dot text-[9px] text-neutral-600 block tracking-widest mt-0.5">LVL {row.profiles?.current_level}</span>
+                  </div>
+                  <div className={`text-right font-bold font-dot tracking-wider ${row.rank_position === 1 ? 'text-adrnln text-glow-adrnln' : 'text-neutral-300'}`}>
+                    {row.profiles?.total_xp} XP
                   </div>
                 </div>
               ))
             ) : (
-              <div className="text-center py-12 text-neutral-700 uppercase tracking-widest">
+              <div className="p-8 text-center text-[10px] font-dot text-neutral-600 uppercase tracking-widest border border-dashed border-border/20 bg-background/20 mt-2">
+                {selectedTrackId ? '[ NO ACTIVE SPEEDS RECORDED ON CIRCUIT ]' : '[ SELECT NODE LAYER DROPDOWN ]'}
+              </div>
+            )}
+          </div>
+          
+          <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none">
+             <span className="font-dot text-8xl font-black">02</span>
+          </div>
+        </section>
+
+        {/* COLUMN 3: REQUIREMENT 3 - GLOBAL ELITE TOP 100 TOTAL XP STREAM */}
+        <section className="lg:col-span-4 glass p-6 border border-border/40 bg-card/40 rounded-none h-fit shadow-lg relative overflow-hidden">
+          <div className="border-l-4 border-neutral-700 pl-3 mb-6 relative z-10">
+            <h2 className="text-sm font-bold font-sans uppercase tracking-widest text-white">03 // Global Elite Pipeline</h2>
+            <p className="text-[10px] text-neutral-500 font-dot tracking-widest mt-1 uppercase">Top 100 lifetime points accruals.</p>
+          </div>
+
+          {/* STREAM TERMINAL CONTAINER WITH SCROLL OVERRIDES */}
+          <div className="max-h-[600px] overflow-y-auto pr-3 space-y-2 relative z-10 scrollbar-thin">
+            {globalXpRank.length > 0 ? (
+              globalXpRank.map((pilot, idx) => (
+                <div key={pilot.id} className="border border-border/20 bg-background/40 p-3 flex justify-between items-center transition-all hover-lift hover:border-border/60 group">
+                  <div className="flex items-center space-x-4 min-w-0">
+                    <span className="font-dot text-neutral-600 text-xs w-5 text-right group-hover:text-neutral-400 transition-colors shrink-0">
+                      {(idx + 1).toString().padStart(2, '0')}
+                    </span>
+                    <span className="text-white font-sans font-bold tracking-wide text-sm truncate">
+                      {pilot.username}
+                    </span>
+                  </div>
+                  <div className="text-neutral-300 font-bold font-dot tracking-wider shrink-0 ml-2">
+                    {pilot.total_xp.toLocaleString()} <span className="text-[9px] text-neutral-600 ml-0.5">XP</span>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div className="text-center py-12 text-[10px] text-neutral-600 font-dot uppercase tracking-widest border border-dashed border-border/20 bg-background/20">
                 [ SYNCING GLOBAL NETWORK SCORES... ]
               </div>
             )}
+          </div>
+
+          <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none">
+             <span className="font-dot text-8xl font-black">03</span>
           </div>
         </section>
 

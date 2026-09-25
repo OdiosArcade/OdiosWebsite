@@ -6,45 +6,89 @@ export const Route = createFileRoute('/pitlane')({
   component: PitLaneMonitor,
 });
 
+interface TrackItem {
+  id: string;
+  name: string;
+}
+
 interface QueueItem {
   kart_id: string;
   profile_id: string;
   total_laps_allocated: number;
   laps_remaining: number;
   assigned_at: string;
+  track_id: string; // Ensure track reference mapping is available
   profiles: { username: string; current_level: number } | null;
   karts: { kart_number: number } | null;
 }
 
 function PitLaneMonitor() {
+  const [tracks, setTracks] = useState<TrackItem[]>([]);
+  const [selectedTrackId, setSelectedTrackId] = useState<string>('');
   const [activeQueue, setActiveQueue] = useState<QueueItem[]>([]);
   const [sysTime, setSysTime] = useState(new Date().toLocaleTimeString());
+  const [loading, setLoading] = useState(true);
 
+  // System clock hook
   useEffect(() => {
     const clockInterval = setInterval(() => {
       setSysTime(new Date().toLocaleTimeString());
     }, 1000);
+    return () => clearInterval(clockInterval);
+  }, []);
 
-    fetchLiveQueue();
+  // Initial Fetch: Pull available tracks
+  useEffect(() => {
+    const fetchTracks = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('tracks')
+          .select('id, name')
+          .order('name', { ascending: true });
 
+        if (data && data.length > 0) {
+          setTracks(data);
+          setSelectedTrackId(data[0].id); // Default to the first circuit
+        }
+        if (error) console.error('Error fetching tracks:', error);
+      } catch (err) {
+        console.error('Track list connection failure:', err);
+      }
+    };
+
+    fetchTracks();
+  }, []);
+
+  // Live Queue Fetch & Realtime Sync Hook dependent on selectedTrackId
+  useEffect(() => {
+    if (!selectedTrackId) return;
+
+    setLoading(true);
+    fetchLiveQueue(selectedTrackId);
+
+    // Setup track-filtered realtime telemetry streaming channel
     const queueSubscription = supabase
-      .channel('live_pit_changes')
+      .channel(`live_pit_changes_${selectedTrackId}`)
       .on(
         'postgres_changes',
-        { event: '*', schema: 'public', table: 'active_assignments' },
+        { 
+          event: '*', 
+          schema: 'public', 
+          table: 'active_assignments',
+          filter: `track_id=eq.${selectedTrackId}` // Row Level Filtering filter parameter
+        },
         () => {
-          fetchLiveQueue();
+          fetchLiveQueue(selectedTrackId);
         }
       )
       .subscribe();
 
     return () => {
-      clearInterval(clockInterval);
       supabase.removeChannel(queueSubscription);
     };
-  }, []);
+  }, [selectedTrackId]);
 
-  const fetchLiveQueue = async () => {
+  const fetchLiveQueue = async (trackId: string) => {
     try {
       const { data, error } = await supabase
         .from('active_assignments')
@@ -54,9 +98,11 @@ function PitLaneMonitor() {
           total_laps_allocated,
           laps_remaining,
           assigned_at,
+          track_id,
           profiles ( username, current_level ),
           karts ( kart_number )
         `)
+        .eq('track_id', trackId) // Filters dynamically by user selection mapping
         .gt('laps_remaining', 0)
         .order('assigned_at', { ascending: true });
 
@@ -66,12 +112,14 @@ function PitLaneMonitor() {
       if (error) console.error('Queue connection dropped:', error);
     } catch (err) {
       console.error('System fetching failure:', err);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className="min-h-screen bg-neutral-950 text-white p-6 grid-bg scanlines">
-      <header className="border-b-4 border-yellow-500 bg-black p-6 mb-8 flex justify-between items-center shadow-md">
+      <header className="border-b-4 border-yellow-500 bg-black p-6 mb-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 shadow-md">
         <div>
           <span className="bg-yellow-500 text-black px-2 py-0.5 text-[10px] font-mono font-bold tracking-widest uppercase">
             GARAGE HUD MONITOR
@@ -80,18 +128,44 @@ function PitLaneMonitor() {
             PIT LANE DISPATCH QUEUE
           </h1>
         </div>
-        <div className="text-right font-mono">
+        
+        {/* TRACK CIRCUIT SELECTOR CONTROL */}
+        <div className="flex flex-col sm:items-end gap-2 w-full sm:w-auto">
+          <label className="text-[10px] text-neutral-500 font-mono tracking-widest uppercase">
+            SELECT ACTIVE CIRCUIT
+          </label>
+          <select
+            value={selectedTrackId}
+            onChange={(e) => setSelectedTrackId(e.target.value)}
+            className="bg-neutral-900 border border-neutral-700 text-yellow-400 font-tech uppercase font-bold tracking-wider text-sm p-2 rounded-none focus:outline-none focus:border-yellow-500 min-w-[220px]"
+          >
+            {tracks.map((track) => (
+              <option key={track.id} value={track.id}>
+                {track.name}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="text-left sm:text-right font-mono">
           <div className="text-2xl font-bold text-yellow-400 font-tech tracking-widest">{sysTime}</div>
           <div className="text-[10px] text-neutral-500 tracking-wider">SYSTEM NODE: LOCAL_PIT_01</div>
         </div>
       </header>
 
       <main className="space-y-6">
-        {activeQueue.length > 0 ? (
+        {loading ? (
+          <div className="border-2 border-neutral-800 bg-neutral-950 p-20 text-center">
+            <div className="w-16 h-16 border-4 border-t-yellow-500 border-neutral-800 rounded-full animate-spin mx-auto mb-6"></div>
+            <h3 className="text-lg font-bold uppercase font-tech text-neutral-500 tracking-wider">
+              Syncing Track Telemetry Engine...
+            </h3>
+          </div>
+        ) : activeQueue.length > 0 ? (
           <div className="grid grid-cols-1 gap-4">
             {activeQueue.map((item, index) => (
               <div 
-                key={item.kart_id} 
+                key={`${item.kart_id}_${item.profile_id}_${index}`} // ➔ Change this key line
                 className={`border-2 p-5 flex flex-col md:flex-row justify-between items-stretch md:items-center bg-black/80 transition-all ${
                   index === 0 
                     ? 'border-yellow-500 shadow-[0_0_25px_rgba(234,179,8,0.15)] bg-gradient-to-r from-yellow-950/20 to-transparent' 
@@ -129,7 +203,7 @@ function PitLaneMonitor() {
                   <div className="text-left md:text-center px-4 border-l border-neutral-800">
                     <span className="block text-[10px] font-mono uppercase tracking-wider text-neutral-500">LAPS RUNWAY</span>
                     <span className="text-xl font-bold font-mono text-emerald-400 tracking-wider">
-                      {item.laps_remaining} <span className="text-xs text-neutral-400 font-sans text-white">/ {item.total_laps_allocated} REMAINING</span>
+                      {item.laps_remaining} <span className="text-xs text-neutral-400 font-sans">/ {item.total_laps_allocated} REMAINING</span>
                     </span>
                   </div>
 
@@ -149,16 +223,15 @@ function PitLaneMonitor() {
                     </span>
                   )}
                 </div>
-
               </div>
             ))}
           </div>
         ) : (
           <div className="border-2 border-dashed border-neutral-800 bg-neutral-950 p-20 text-center shadow-inner">
-            <div className="w-16 h-16 border-4 border-t-yellow-500 border-neutral-800 rounded-full animate-spin mx-auto mb-6"></div>
             <h3 className="text-lg font-bold uppercase font-tech text-neutral-400 tracking-wider">
-              Awaiting Race Director Clearances...
+              No Staged Active Assignments on this Circuit.
             </h3>
+            <p className="text-xs font-mono text-neutral-600 mt-2 uppercase">Awaiting Race Director Clearances...</p>
           </div>
         )}
       </main>
